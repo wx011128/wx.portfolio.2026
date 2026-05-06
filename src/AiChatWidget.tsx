@@ -41,30 +41,16 @@ const assistantDesktopSize = {
   width: 78,
 };
 
-const assistantMobileSize = {
-  height: 82,
-  width: 68,
-};
-
 const dragMargin = 12;
 const dragThreshold = 4;
 const assistantDesktopInitialBottomGap = 150;
 const assistantDesktopInitialRightGap = 30;
-const assistantMobileInitialTopRatio = 0.365;
-const assistantMobileInitialRightGapRatio = 0.105;
-const assistantInitialRightGapMin = 44;
 const panelDesktopMaxSize = {
   height: 580,
   width: 380,
 };
-const panelMobileMaxSize = {
-  height: 520,
-  width: Number.POSITIVE_INFINITY,
-};
 const panelDesktopViewportInset = 16;
-const panelMobileViewportInset = 14;
 const panelDesktopHeightReserve = 118;
-const panelMobileHeightReserve = 92;
 const panelGap = 12;
 const panelMinimumAvailableHeight = 120;
 
@@ -105,11 +91,7 @@ function getReadableError(status: number) {
 }
 
 function getAssistantSize() {
-  return window.matchMedia('(max-width: 720px)').matches ? assistantMobileSize : assistantDesktopSize;
-}
-
-function getIsMobileViewport() {
-  return window.matchMedia('(max-width: 720px)').matches;
+  return assistantDesktopSize;
 }
 
 function clampNumber(value: number, min: number, max: number) {
@@ -130,22 +112,16 @@ function clampAssistantPosition(position: DragPosition): DragPosition {
 }
 
 function getPanelSize(): ElementSize {
-  const isMobile = getIsMobileViewport();
-  const viewportInset = isMobile ? panelMobileViewportInset : panelDesktopViewportInset;
-  const maxSize = isMobile ? panelMobileMaxSize : panelDesktopMaxSize;
-  const heightReserve = isMobile ? panelMobileHeightReserve : panelDesktopHeightReserve;
-
   return {
-    height: Math.max(220, Math.min(maxSize.height, window.innerHeight - heightReserve)),
-    width: isMobile ? window.innerWidth - viewportInset * 2 : Math.min(maxSize.width, window.innerWidth - viewportInset * 2),
+    height: Math.max(220, Math.min(panelDesktopMaxSize.height, window.innerHeight - panelDesktopHeightReserve)),
+    width: Math.min(panelDesktopMaxSize.width, window.innerWidth - panelDesktopViewportInset * 2),
   };
 }
 
 function getPanelLayout(assistantPosition: DragPosition): PanelLayout {
   const assistantSize = getAssistantSize();
   const panelSize = getPanelSize();
-  const isMobile = getIsMobileViewport();
-  const viewportInset = isMobile ? panelMobileViewportInset : panelDesktopViewportInset;
+  const viewportInset = panelDesktopViewportInset;
   const maxX = window.innerWidth - panelSize.width - viewportInset;
   const assistantCenterX = assistantPosition.x + assistantSize.width / 2;
   const rightAlignedX = assistantPosition.x + assistantSize.width - panelSize.width;
@@ -183,20 +159,10 @@ function snapAssistantPosition(position: DragPosition): DragPosition {
 
 function getInitialAssistantPosition(): DragPosition {
   const size = getAssistantSize();
-  const isMobile = getIsMobileViewport();
-
-  if (!isMobile) {
-    return clampAssistantPosition({
-      x: window.innerWidth - size.width - assistantDesktopInitialRightGap,
-      y: window.innerHeight - size.height - assistantDesktopInitialBottomGap,
-    });
-  }
-
-  const rightGap = Math.max(assistantInitialRightGapMin, window.innerWidth * assistantMobileInitialRightGapRatio);
 
   return clampAssistantPosition({
-    x: window.innerWidth - size.width - rightGap,
-    y: window.innerHeight * assistantMobileInitialTopRatio,
+    x: window.innerWidth - size.width - assistantDesktopInitialRightGap,
+    y: window.innerHeight - size.height - assistantDesktopInitialBottomGap,
   });
 }
 

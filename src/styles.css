@@ -1503,119 +1503,6 @@ button {
   }
 }
 
-@media (max-width: 720px) {
-  .ai-chat {
-    top: var(--ai-chat-y, 36.5svh);
-    left: var(--ai-chat-x, calc(100vw - 68px - max(44px, 10.5vw)));
-    right: auto;
-    bottom: auto;
-  }
-
-  .ai-chat-toggle {
-    width: 68px;
-    height: 82px;
-  }
-
-  .ai-chat-panel {
-    top: var(--ai-panel-top, auto);
-    left: var(--ai-panel-x, 14px);
-    right: auto;
-    bottom: var(--ai-panel-bottom, 14px);
-    width: calc(100vw - 28px);
-    height: auto;
-    max-height: min(var(--ai-panel-max-height, 520px), calc(100svh - 28px));
-    border-radius: 16px;
-  }
-}
-
-@media (max-width: 720px) and (orientation: portrait) {
-  .home-view {
-    min-height: 100svh;
-    background: #fff;
-    place-items: center;
-  }
-
-  .home-composition {
-    width: min(100vw, 46.602svh);
-    min-height: 0;
-    height: min(100svh, 214.583vw);
-    aspect-ratio: 384 / 824;
-    container-type: inline-size;
-  }
-
-  .home-scale-frame,
-  .home-artboard {
-    position: absolute;
-    inset: 0;
-  }
-
-  .home-gray-block {
-    left: 0;
-    top: 65.65%;
-    bottom: auto;
-    width: 100%;
-    height: 28%;
-  }
-
-  .home-person {
-    left: 50%;
-    top: auto;
-    bottom: -7.8%;
-    width: 148%;
-    max-width: none;
-    animation-name: mobile-person-enter;
-    transform: translateX(-50%);
-  }
-
-  .home-title {
-    left: 0;
-    right: 7.6%;
-    top: 8.35%;
-    width: auto;
-    text-align: right;
-    justify-items: end;
-  }
-
-  .home-title h1 {
-    width: auto;
-    font-size: 14.4cqw;
-    line-height: 0.95;
-    text-align: right;
-  }
-
-  .home-title p {
-    display: grid;
-    gap: 2.6cqw;
-    width: auto;
-    margin-top: 3cqw;
-    justify-items: end;
-    line-height: 0.95;
-    text-align: right;
-  }
-
-  .home-title span,
-  .home-title strong {
-    display: block;
-    width: auto;
-    font-size: 11.4cqw;
-    line-height: 0.95;
-    text-align: right;
-  }
-
-  .enter-hotspot {
-    left: 0;
-    top: auto;
-    bottom: 6.3%;
-    width: 17.8cqw;
-    height: 17.8cqw;
-  }
-
-  .enter-hotspot i {
-    width: 30%;
-    height: 2px;
-  }
-}
-
 @keyframes home-stage-enter {
   from {
     background: #fff;
@@ -1649,18 +1536,6 @@ button {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes mobile-person-enter {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(26px) scale(0.985);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
   }
 }
 
