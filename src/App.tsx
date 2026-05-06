@@ -1,5 +1,6 @@
 import { Cake, ChevronLeft, Mail, Phone, School } from 'lucide-react';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import AiChatWidget from './AiChatWidget';
 
 type View = 'home' | 'inside' | 'project-01' | 'project-02' | 'project-03' | 'project-04';
 type InsidePage = 'about' | 'contents';
@@ -463,15 +464,6 @@ function App() {
     }
   };
 
-  const goBackOr = (fallback: () => void) => {
-    if (historyDepthRef.current > 0) {
-      window.history.back();
-      return;
-    }
-
-    fallback();
-  };
-
   const enterPortfolio = () => {
     if (homeLeaving) {
       return;
@@ -537,106 +529,115 @@ function App() {
     const projectPages = getProjectPages(activeProject);
 
     return (
-      <main className={`project-view ${activeProject.id}`}>
-        <button className="home-return-button project-return-button" onClick={returnToContents} type="button" aria-label="返回目录页">
-          <ChevronLeft aria-hidden="true" />
-        </button>
-        <section className="project-pages" aria-label={activeProject.title}>
-          {projectPages.map((page, index) => (
-            <figure
-              className="project-page-frame"
-              key={page}
-              style={
-                activeProject.pageAspectRatios?.[index] || activeProject.pageAspectRatio
-                  ? { aspectRatio: activeProject.pageAspectRatios?.[index] ?? activeProject.pageAspectRatio }
-                  : undefined
-              }
-            >
-              <ProjectPageImage
-                height={activeProject.pageImageHeights?.[index] ?? activeProject.pageImageHeight ?? 2160}
-                index={index}
-                page={page}
-                title={activeProject.title}
-                width={activeProject.pageImageWidths?.[index] ?? activeProject.pageImageWidth ?? 3840}
-              />
-            </figure>
-          ))}
-        </section>
-      </main>
+      <>
+        <main className={`project-view ${activeProject.id}`}>
+          <button className="home-return-button project-return-button" onClick={returnToContents} type="button" aria-label="返回目录页">
+            <ChevronLeft aria-hidden="true" />
+          </button>
+          <section className="project-pages" aria-label={activeProject.title}>
+            {projectPages.map((page, index) => (
+              <figure
+                className="project-page-frame"
+                key={page}
+                style={
+                  activeProject.pageAspectRatios?.[index] || activeProject.pageAspectRatio
+                    ? { aspectRatio: activeProject.pageAspectRatios?.[index] ?? activeProject.pageAspectRatio }
+                    : undefined
+                }
+              >
+                <ProjectPageImage
+                  height={activeProject.pageImageHeights?.[index] ?? activeProject.pageImageHeight ?? 2160}
+                  index={index}
+                  page={page}
+                  title={activeProject.title}
+                  width={activeProject.pageImageWidths?.[index] ?? activeProject.pageImageWidth ?? 3840}
+                />
+              </figure>
+            ))}
+          </section>
+        </main>
+        <AiChatWidget />
+      </>
     );
   }
 
   if (view === 'inside') {
     return (
-      <main className={`inside-view is-showing-${insidePage}`}>
-        <div className="inside-action-layer">
-          <button className="home-return-button" onClick={returnHome} type="button" aria-label="返回首页">
-            <ChevronLeft aria-hidden="true" />
-          </button>
-        </div>
-
-        <section className="stage-page about-stage" id="about">
-          <div className="stage-canvas" key={aboutAnimationKey}>
-            <AboutPage />
+      <>
+        <main className={`inside-view is-showing-${insidePage}`}>
+          <div className="inside-action-layer">
+            <button className="home-return-button" onClick={returnHome} type="button" aria-label="返回首页">
+              <ChevronLeft aria-hidden="true" />
+            </button>
           </div>
-        </section>
 
-        <section className="stage-page contents-page" id="contents">
-          <div className="stage-canvas" key={contentsAnimationKey}>
-            <ContentsPage onOpenProject={openProject} />
-          </div>
-        </section>
+          <section className="stage-page about-stage" id="about">
+            <div className="stage-canvas" key={aboutAnimationKey}>
+              <AboutPage />
+            </div>
+          </section>
 
-        <nav className="side-pager" aria-label="页面切换">
-          <button
-            aria-current={insidePage === 'about' ? 'page' : undefined}
-            aria-label="切换到个人页"
-            className={insidePage === 'about' ? 'is-active' : ''}
-            onClick={showAbout}
-            type="button"
-          />
-          <button
-            aria-current={insidePage === 'contents' ? 'page' : undefined}
-            aria-label="切换到目录页"
-            className={insidePage === 'contents' ? 'is-active' : ''}
-            onClick={showContents}
-            type="button"
-          />
-        </nav>
+          <section className="stage-page contents-page" id="contents">
+            <div className="stage-canvas" key={contentsAnimationKey}>
+              <ContentsPage onOpenProject={openProject} />
+            </div>
+          </section>
 
-        <div className={`notice ${notice ? 'is-visible' : ''}`}>{notice}</div>
-      </main>
+          <nav className="side-pager" aria-label="页面切换">
+            <button
+              aria-current={insidePage === 'about' ? 'page' : undefined}
+              aria-label="切换到个人页"
+              className={insidePage === 'about' ? 'is-active' : ''}
+              onClick={showAbout}
+              type="button"
+            />
+            <button
+              aria-current={insidePage === 'contents' ? 'page' : undefined}
+              aria-label="切换到目录页"
+              className={insidePage === 'contents' ? 'is-active' : ''}
+              onClick={showContents}
+              type="button"
+            />
+          </nav>
+
+          <div className={`notice ${notice ? 'is-visible' : ''}`}>{notice}</div>
+        </main>
+        <AiChatWidget />
+      </>
     );
   }
 
   return (
-    <main className={`home-view ${homeLeaving ? 'is-leaving' : ''}`}>
-      <section className="home-composition" aria-label="危箫个人作品集首页">
-        <div className="home-scale-frame">
-          <div className="home-artboard">
-            <div className="home-gray-block" />
-            <img className="home-person" src="/assets/home/person.png" alt="" />
-            <div className="home-title">
-              <h1>PORTFOLIO</h1>
-              <p>
-                <span>UX DESIGN</span>
-                <strong>2026</strong>
-              </p>
+    <>
+      <main className={`home-view ${homeLeaving ? 'is-leaving' : ''}`}>
+        <section className="home-composition" aria-label="危箫个人作品集首页">
+          <div className="home-scale-frame">
+            <div className="home-artboard">
+              <div className="home-gray-block" />
+              <img className="home-person" src="/assets/home/person.png" alt="" />
+              <div className="home-title">
+                <h1>PORTFOLIO</h1>
+                <p>
+                  <span>UX DESIGN</span>
+                  <strong>2026</strong>
+                </p>
+              </div>
+              <button
+                aria-label="进入作品集"
+                className="enter-hotspot"
+                disabled={homeLeaving}
+                onClick={enterPortfolio}
+                type="button"
+              >
+                <i aria-hidden="true" />
+                <span>进入作品集</span>
+              </button>
             </div>
-            <button
-              aria-label="进入作品集"
-              className="enter-hotspot"
-              disabled={homeLeaving}
-              onClick={enterPortfolio}
-              type="button"
-            >
-              <i aria-hidden="true" />
-              <span>进入作品集</span>
-            </button>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+      <AiChatWidget />
+    </>
   );
 }
 
