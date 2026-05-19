@@ -1,16 +1,340 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="危箫的 UX 设计作品集，展示研究、策略、交互设计与产品体验项目。"
-    />
-    <title>危箫个人作品集网站</title>
+    <meta name="description" content="危箫的 UX 设计个人作品集网站。" />
+    <title>WEIXIAO Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <header id="top" class="site-header page-pad" aria-label="Site header">
+      <a class="brand" href="#top" aria-label="WEIXIAO home">
+        <span class="star star-sm" aria-hidden="true"></span>
+        <span>UX DESIGN 2026</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="#top">首页</a>
+        <a class="nav-link" href="#about">关于</a>
+        <a class="nav-link" href="#portfolio-title">作品</a>
+      </nav>
+
+      <a class="btn header-btn" href="#contact">联系我</a>
+    </header>
+
+    <main>
+      <section class="hero page-pad" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">
+              <span>我是危箫，</span>
+              <span>一名用户体验设计师</span>
+            </h1>
+            <p class="service-line">
+              <span class="dot-star" aria-hidden="true"></span>
+              <span>用户体验设计</span>
+              <span class="dot-star" aria-hidden="true"></span>
+              <span>产品体验设计</span>
+              <span class="dot-star" aria-hidden="true"></span>
+              <span><span class="latin-weight-match">AI</span>设计</span>
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#portfolio-title">进入作品集</a>
+              <a class="btn" href="#about">关于危箫</a>
+            </div>
+          </div>
+
+          <div class="hero-art reveal" aria-label="Portrait illustration">
+            <div class="portrait-bg" aria-hidden="true">
+              <span class="shape diamond-left"></span>
+              <span class="shape diamond-right"></span>
+              <span class="shape bar"></span>
+            </div>
+            <figure class="portrait">
+              <img
+                src="assets/hero-portrait.png"
+                alt="危箫在雪山前的个人照片"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="ticker-wrap" aria-label="Services ticker">
+        <div class="ticker">
+          <div class="ticker-track">
+            <span class="ticker-item"><i></i><span>用户研究</span></span>
+            <span class="ticker-item"><i></i><span>用户体验设计</span></span>
+            <span class="ticker-item"><i></i><span>产品体验设计</span></span>
+            <span class="ticker-item"><i></i><span><span class="ticker-en">AI</span> 设计流程</span></span>
+            <span class="ticker-item"><i></i><span class="ticker-en">Vibe Coding</span></span>
+            <span class="ticker-item"><i></i><span>产品落地</span></span>
+            <span class="ticker-item"><i></i><span>用户研究</span></span>
+            <span class="ticker-item"><i></i><span>用户体验设计</span></span>
+            <span class="ticker-item"><i></i><span>产品体验设计</span></span>
+            <span class="ticker-item"><i></i><span><span class="ticker-en">AI</span> 设计流程</span></span>
+            <span class="ticker-item"><i></i><span class="ticker-en">Vibe Coding</span></span>
+            <span class="ticker-item"><i></i><span>产品落地</span></span>
+            <span class="ticker-item"><i></i><span>用户研究</span></span>
+            <span class="ticker-item"><i></i><span>用户体验设计</span></span>
+            <span class="ticker-item"><i></i><span>产品体验设计</span></span>
+            <span class="ticker-item"><i></i><span><span class="ticker-en">AI</span> 设计流程</span></span>
+            <span class="ticker-item"><i></i><span class="ticker-en">Vibe Coding</span></span>
+            <span class="ticker-item"><i></i><span>产品落地</span></span>
+            <span class="ticker-item"><i></i><span>用户研究</span></span>
+            <span class="ticker-item"><i></i><span>用户体验设计</span></span>
+            <span class="ticker-item"><i></i><span>产品体验设计</span></span>
+            <span class="ticker-item"><i></i><span><span class="ticker-en">AI</span> 设计流程</span></span>
+            <span class="ticker-item"><i></i><span class="ticker-en">Vibe Coding</span></span>
+            <span class="ticker-item"><i></i><span>产品落地</span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="about page-narrow" id="about" aria-labelledby="about-title">
+        <div class="about-grid">
+          <div class="reveal">
+            <p class="kicker"><span class="dot-star" aria-hidden="true"></span> 关于危箫</p>
+            <h2 id="about-title">用户体验设计师与产品体验设计师</h2>
+          </div>
+          <div class="about-copy reveal">
+            <h3>目前就读于京都艺术大学交互设计专业，硕士期间的研究课题是可穿戴设备的嗅觉交互体验。</h3>
+            <p>
+              我的设计工作不止于界面呈现，而是从用户需求、产品逻辑和实现条件出发，梳理清晰的体验路径。除了<span class="body-latin">UI</span>与<span class="body-latin">UX</span>的能力之外，我也持续使用<span class="body-latin">AI</span>工具提升设计效率，并通过<span class="body-latin">Vibe Coding</span>更深入地参与产品验证与实现过程。
+            </p>
+            <dl class="bio-meta">
+              <div>
+                <dt>出生地</dt>
+                <dd>中国 · 武汉</dd>
+              </div>
+              <div>
+                <dt>所在地</dt>
+                <dd>日本 · 大阪</dd>
+              </div>
+              <div>
+                <dt>出生日期</dt>
+                <dd class="bio-date">2001.11.28</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="awards page-narrow" aria-labelledby="awards-title">
+        <div class="section-heading reveal">
+          <span class="star" aria-hidden="true"></span>
+          <h2 id="awards-title">个人履历</h2>
+          <p>实习经历 · 学习经历 · 项目经历</p>
+        </div>
+
+        <div class="award-list">
+          <article class="award-row reveal">
+            <span class="award-index">1</span>
+            <div>
+              <h3>东风汽车 悦享交通部门</h3>
+              <p>人机交互设计师实习生</p>
+            </div>
+            <span class="award-type">实习经历</span>
+            <time>2022</time>
+          </article>
+          <article class="award-row reveal">
+            <span class="award-index">2</span>
+            <div>
+              <h3>京都艺术大学</h3>
+              <p>交互设计硕士</p>
+            </div>
+            <span class="award-type">学习经历</span>
+            <time>2025</time>
+          </article>
+          <article class="award-row reveal">
+            <span class="award-index">3</span>
+            <div>
+              <h3>微信小程序解决方案挑战赛</h3>
+              <p>松屋银座项目体验设计师</p>
+            </div>
+            <span class="award-type">项目经历</span>
+            <time>2025</time>
+          </article>
+        </div>
+      </section>
+
+      <section class="portfolio page-narrow" aria-labelledby="portfolio-title">
+        <div class="edge-star" aria-hidden="true"></div>
+        <div class="section-heading reveal">
+          <span class="star" aria-hidden="true"></span>
+          <h2 id="portfolio-title">作品集</h2>
+          <p>用户体验 · 产品设计 · 交互探索</p>
+        </div>
+
+        <div class="portfolio-list">
+          <a class="portfolio-card reveal" href="project-01.html" aria-label="查看小红书搜索体验改版详情">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1602576666092-bf6447a729fc?auto=format&fit=crop&w=900&q=85"
+                alt="小红书搜索体验改版项目封面占位"
+              />
+            </figure>
+            <div>
+              <span class="tag">搜索体验优化</span>
+              <h3>小红书搜索体验改版</h3>
+              <p>面向小红书搜索场景，围绕旅行攻略、消费经验等高频决策内容，优化信息筛选、结果浏览与收藏对比流程，帮助用户更高效地完成搜索判断与内容决策。</p>
+              <dl class="portfolio-meta">
+                <div>
+                  <dt>类型</dt>
+                  <dd>虚拟项目</dd>
+                </div>
+                <div>
+                  <dt>场景</dt>
+                  <dd>搜索体验</dd>
+                </div>
+                <div>
+                  <dt>时间</dt>
+                  <dd>2026</dd>
+                </div>
+              </dl>
+            </div>
+          </a>
+
+          <a class="portfolio-card reveal" href="project-02.html" aria-label="查看松屋银座用户体验设计详情">
+            <figure>
+              <img
+                class="cover-left"
+                src="assets/project-02/cover/home-cover.webp"
+                alt="松屋银座 Sota 服务场景项目封面"
+              />
+            </figure>
+            <div>
+              <span class="tag">小程序体验设计</span>
+              <h3>松屋银座用户体验设计</h3>
+              <p>面向赴日游客的数字化购物体验方案，结合微信小程序、AI引导与线下服务整合，提升游客在松屋银座场景中的购物效率与服务连续性。</p>
+              <dl class="portfolio-meta">
+                <div>
+                  <dt>类型</dt>
+                  <dd>比赛项目</dd>
+                </div>
+                <div>
+                  <dt>场景</dt>
+                  <dd>微信小程序</dd>
+                </div>
+                <div>
+                  <dt>时间</dt>
+                  <dd>2025</dd>
+                </div>
+              </dl>
+            </div>
+          </a>
+
+          <a class="portfolio-card reveal" href="project-03.html" aria-label="查看悦享智行多端体验设计详情">
+            <figure>
+              <img
+                src="assets/project-03/cover/home-cover.webp"
+                alt="悦享智行无人驾驶接驳车项目封面"
+              />
+            </figure>
+            <div>
+              <span class="tag">多平台体验设计</span>
+              <h3>悦享智行多端体验设计</h3>
+              <p>围绕无人驾驶接驳场景，构建覆盖用户端小程序、车载控制端与后台调度端的多平台出行服务系统，提升多端协同效率与体验一致性。</p>
+              <dl class="portfolio-meta">
+                <div>
+                  <dt>类型</dt>
+                  <dd>实习项目</dd>
+                </div>
+                <div>
+                  <dt>场景</dt>
+                  <dd>无人驾驶接驳</dd>
+                </div>
+                <div>
+                  <dt>时间</dt>
+                  <dd>2022</dd>
+                </div>
+              </dl>
+            </div>
+          </a>
+
+          <a class="portfolio-card reveal" href="project-04.html" aria-label="查看日本交互设计艺术装置详情">
+            <figure>
+              <img
+                src="assets/project-04/cover/home-cover.webp"
+                alt="日本交互设计艺术装置项目封面"
+              />
+            </figure>
+            <div>
+              <span class="tag">交互艺术装置</span>
+              <h3>日本交互设计艺术装置</h3>
+              <p>以多感官交互为核心，探索嗅觉、触觉与声音等非视觉信息在空间认知和社会行为体验中的设计可能性，并通过实体装置完成交互验证。</p>
+              <dl class="portfolio-meta">
+                <div>
+                  <dt>类型</dt>
+                  <dd>个人作品集</dd>
+                </div>
+                <div>
+                  <dt>场景</dt>
+                  <dd>交互装置</dd>
+                </div>
+                <div>
+                  <dt>时间</dt>
+                  <dd>2024</dd>
+                </div>
+              </dl>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="contact page-narrow" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading reveal">
+          <span class="star" aria-hidden="true"></span>
+          <h2 id="contact-title">联系我</h2>
+          <p>项目合作 · 工作机会 · 作品交流</p>
+        </div>
+
+        <div class="award-list">
+          <article class="award-row contact-copy-row reveal" data-copy="13343444202@163.com" role="button" tabindex="0" aria-label="复制邮箱">
+            <span class="award-index">1</span>
+            <div>
+              <h3>邮箱</h3>
+              <p>13343444202@163.com</p>
+            </div>
+            <span class="copy-status" aria-live="polite">已复制</span>
+          </article>
+          <article class="award-row contact-copy-row reveal" data-copy="wx011128@gmail.com" role="button" tabindex="0" aria-label="复制 Gmail">
+            <span class="award-index">2</span>
+            <div>
+              <h3 class="contact-title-en">Gmail</h3>
+              <p>wx011128@gmail.com</p>
+            </div>
+            <span class="copy-status" aria-live="polite">已复制</span>
+          </article>
+          <article class="award-row contact-copy-row reveal" data-copy="13343444202" role="button" tabindex="0" aria-label="复制微信">
+            <span class="award-index">3</span>
+            <div>
+              <h3>微信</h3>
+              <p>13343444202</p>
+            </div>
+            <span class="copy-status" aria-live="polite">已复制</span>
+          </article>
+          <a class="award-row contact-link-row reveal" href="https://xhslink.com/m/8BvU5w4jP2T" target="_blank" rel="noopener" aria-label="打开小红书主页">
+            <span class="award-index">4</span>
+            <div>
+              <h3>小红书</h3>
+              <p>点击进入我的主页</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer page-pad">
+      <p>© 2026 危箫个人作品集. All rights reserved.</p>
+      <a class="btn" href="#top">回到顶部</a>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
